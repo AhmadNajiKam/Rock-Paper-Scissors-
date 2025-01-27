@@ -1,4 +1,3 @@
-let humanScore, computerScore;
 
 const getComputerChoice = () => {
   const choice = Math.random();
@@ -15,15 +14,21 @@ const getHumanChoice = () => {
   }
   return choice;
 }
-const playRound = (humanChoice, computerChoice) => {
-  humanChoice = humanChoice.toLowerCase();
-  if (humanChoice === "rock" && computerChoice === "scissors") computerScore++;
-  else if (humanChoice === "rock" && computerChoice === "paper") humanScore++;
-  else if (humanChoice === "paper" && computerChoice === "scissors") computerScore++;
-  else if (humanChoice === "paper" && computerChoice === "rock") humanScore++;
-  else if (humanChoice === "scissors" && computerChoice === "rock") computerScore++;
-  else if (humanChoice === "scissors" && computerChoice === "paper") humanScore++;
-}
+const playGame = () => {
 
-console.log(getComputerChoice());
-console.log(getHumanChoice());
+  let humanScore = 0, computerScore = 0;
+  const playRound = (humanChoice, computerChoice) => {
+    humanChoice = humanChoice.toLowerCase();
+    if (humanChoice === "rock" && computerChoice === "scissors") computerScore++;
+    else if (humanChoice === "rock" && computerChoice === "paper") humanScore++;
+    else if (humanChoice === "paper" && computerChoice === "scissors") computerScore++;
+    else if (humanChoice === "paper" && computerChoice === "rock") humanScore++;
+    else if (humanChoice === "scissors" && computerChoice === "rock") computerScore++;
+    else if (humanChoice === "scissors" && computerChoice === "paper") humanScore++;
+  }
+
+  for (let i = 1; i <= 5; i++)
+    playRound(getHumanChoice(), getComputerChoice());
+  console.log(humanScore, computerScore);
+}
+playGame();
